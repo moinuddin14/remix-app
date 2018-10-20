@@ -1,9 +1,16 @@
 import path from 'path'
 import url from 'url'
-import { app, Menu } from 'electron'
+import {
+  app,
+  Menu
+} from 'electron'
 import createWindow from './helpers/window'
-import { buildMenu } from './helpers/menu'
-import { registerAppCache } from './helpers/app_cache'
+import {
+  buildMenu
+} from './helpers/menu'
+import {
+  registerAppCache
+} from './helpers/app_cache'
 
 let userDataPath = app.getPath('userData')
 if (NODE_ENV !== 'production') {
@@ -11,7 +18,8 @@ if (NODE_ENV !== 'production') {
   app.setPath('userData', userDataPath)
 }
 
-if (process.platform === 'darwin') {
+// Other options that can be provided as platform https://nodejs.org/api/os.html#os_os_platform
+if (process.platform === 'darwin' || process.platform === 'win32') {
   app.setAboutPanelOptions({
     applicationName: 'remix-app',
     credits: 'Horizon Blockchain Games \n https://horizongames.net',
